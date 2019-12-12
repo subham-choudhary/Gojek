@@ -26,7 +26,6 @@ extension UIImageView {
             completion?(imageFromCache)
             return
         }
-        print(url)
         URLSession.shared.dataTask(with: url, completionHandler: { [weak self] (data, respones, error) in
             if error != nil {
                 faliure?()

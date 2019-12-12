@@ -32,11 +32,4 @@ class Utility: NSObject {
             presentingView.viewWithTag(007)?.removeFromSuperview()
         }
     }
-    
-    static func convertImageToBase64(image: UIImage) -> String {
-        let imageData = image.jpegData(compressionQuality: 0.4)!
-        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-    }
-    
-    
 }

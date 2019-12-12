@@ -168,7 +168,7 @@ extension CreateEditViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
             return true
         }
-        if textField.tag < textFields.count - 1{
+        if textField.tag < textFields.count - 1 {
             textFields[textField.tag + 1].becomeFirstResponder()
         }
         return true
