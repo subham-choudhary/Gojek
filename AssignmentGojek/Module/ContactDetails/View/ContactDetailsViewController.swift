@@ -113,7 +113,9 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
         viewModel?.onError = { error in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.navigationController?.popViewController(animated: true)
+                self.showAlertWith(message: error.localizedDescription) { [weak self] in
+                    self?.navigationController?.popViewController(animated: true)
+                }
             }
         }
         viewModel?.addRemoveLoader = { (shouldAddLoader) in
