@@ -17,17 +17,22 @@ class CreateEditViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
-    var contactDetails: ContactDetails? = nil
     
     //MARK:- Stored Properties
-    
+    enum VCType {
+        case Create
+        case Edit
+    }
     private var viewModel: CreateEditProtocol?
+    var contactDetails: ContactDetails? = nil
+    private var vcType: VCType = .Create
     
     //MARK:- View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupVCType()
         setupViewModel()
     }
 
@@ -43,29 +48,36 @@ class CreateEditViewController: UIViewController {
     }
     
     @IBAction func didTapSave(_ sender: Any) {
-
-        viewModel?.createContactsWith(firstName: textFields[0].text, lastName: textFields[1].text, phoneNo: textFields[2].text, email: textFields[3].text)
+        view.endEditing(true)
+        switch vcType {
+        case .Create: viewModel?.createContactsWith(firstName: textFields[0].text, lastName: textFields[1].text, phoneNo: textFields[2].text, email: textFields[3].text)
+        
+        case .Edit: viewModel?.updateContactsWith(id:/contactDetails?.id ,firstName: textFields[0].text, lastName: textFields[1].text, phoneNo: textFields[2].text, email: textFields[3].text)
+        }
+        
     }
     //MARK:- Functions
     
     private func setupUI() {
+        
+        if let details = contactDetails {
+            textFields[0].text = details.firstName
+            textFields[1].text = details.lastName
+            textFields[2].text = details.phoneNumber
+            textFields[3].text = details.email
+            if let url = details.profilePicURLString {
+                profileImaveView.downloadImage(urlString: url)
+            }
+        }
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboardOnTouch))
         view.addGestureRecognizer(tap)
         registerKeyboardNotifications()
         profileImaveView.addCircularBorder()
-        doneButton.isEnabled = false
         textFields[0].becomeFirstResponder()
-        
-        enableDoneIfDetailsValid()
     }
     
-    private func enableDoneIfDetailsValid() {
-        if /textFields[0].text?.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 && /textFields[1].text?.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 {
-            doneButton.isEnabled = true
-        } else {
-            doneButton.isEnabled = false 
-        }
-        
+    private func setupVCType() {
+        vcType = contactDetails == nil ? .Create : .Edit
     }
     
     private func setupViewModel() {
@@ -73,13 +85,21 @@ class CreateEditViewController: UIViewController {
         viewModel?.onSuccess = { contactDetails in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-//                self.updateUIWith(contactDetails: contactDetails)
+                self.showAlertWith(message: "Saved Successfully") {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
         viewModel?.onError = { error in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-//                self.navigationController?.popViewController(animated: true)
+                var message = ""
+                if let errorMessages = self.getStatusCodeIfInvalid(error: error) {
+                    message = errorMessages
+                } else {
+                    message = "Could not save! Please try again later"
+                }
+                self.showAlertWith(message: message) {}
             }
         }
         viewModel?.addRemoveLoader = { (shouldAddLoader) in
@@ -102,6 +122,20 @@ class CreateEditViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    private func getStatusCodeIfInvalid(error: Error) -> String? {
+        let err = error.localizedDescription
+        if err.count > 2 {
+            let index = err.index(err.startIndex, offsetBy: 3)
+            let statusCode = String(err[..<index])
+            if statusCode == "422" {
+                var errorCodes = err.split(separator: "@")
+                errorCodes.removeFirst()
+                let x = errorCodes.map { return String($0)}
+                return x.joined(separator: ", ")
+            }
+        }
+        return nil
+    }
     private func registerKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
@@ -134,15 +168,6 @@ extension CreateEditViewController: UITextFieldDelegate {
         }
         if textField.tag < textFields.count - 1{
             textFields[textField.tag + 1].becomeFirstResponder()
-        }
-        return true
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            guard let self = self else { return }
-            self.enableDoneIfDetailsValid()
         }
         return true
     }

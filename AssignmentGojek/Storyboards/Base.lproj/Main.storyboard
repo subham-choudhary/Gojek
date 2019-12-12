@@ -398,6 +398,9 @@
                     <navigationItem key="navigationItem" id="ZDb-Tp-6WB">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="cr5-fn-Qmj">
                             <color key="tintColor" red="0.32524931429999998" green="0.891990006" blue="0.76077538730000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="didTapEdit:" destination="Luh-Y1-tqO" id="Gpw-wi-sF6"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -509,7 +512,7 @@
                                                         <rect key="frame" x="130" y="8.6666666666666856" width="276" height="39"/>
                                                         <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="4Ey-yj-DKQ" id="Ra8-nv-Kev"/>
                                                         </connections>

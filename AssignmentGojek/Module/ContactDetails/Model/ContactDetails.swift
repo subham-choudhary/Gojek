@@ -10,14 +10,14 @@ import Foundation
 
 struct ContactDetails: Codable {
     
-    let id: Int?
-    let firstName: String?
-    let lastName: String?
-    let email: String?
-    let phoneNumber: String?
-    let profilePicURLString: String?
-    let isFavorite: Bool?
-    let urlString: String?
+    var id: Int? = nil
+    var firstName: String?
+    var lastName: String?
+    var email: String?
+    var phoneNumber: String?
+    var profilePicURLString: String? = nil
+    var isFavorite: Bool? = true
+    var urlString: String? = nil
     
     enum CodingKeys: String, CodingKey {
         case id, email

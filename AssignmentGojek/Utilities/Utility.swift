@@ -12,9 +12,8 @@ import UIKit
 class Utility: NSObject {
     
     private static let spinner = UIActivityIndicatorView()
-    private static let enableButtonColor = UIColor(red: 31/255, green: 90/255, blue: 166/255, alpha: 1.0)
     
-    class func startSpinner(presentingView: UIView, color: UIColor = enableButtonColor) {
+    class func startSpinner(presentingView: UIView, color: UIColor = Color.greenColor) {
         DispatchQueue.main.async {
             spinner.hidesWhenStopped = true
             spinner.style = .gray
@@ -38,4 +37,6 @@ class Utility: NSObject {
         let imageData = image.jpegData(compressionQuality: 0.4)!
         return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
     }
+    
+    
 }

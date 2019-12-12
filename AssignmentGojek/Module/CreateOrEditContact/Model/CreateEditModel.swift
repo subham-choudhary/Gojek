@@ -10,18 +10,19 @@ import Foundation
 import UIKit
 
 struct createContactModel: Encodable {
-    let firstName: String
-    let lastName: String
-    let email: String
-    let phoneNumber: String
-    let favorite = true
+    var firstName: String?
+    var lastName: String?
+    var email: String?
+    var phoneNumber: String?
+    var favorite: Bool? = true
+    var profilePicURLString: String? = nil
     
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
         case lastName = "last_name"
         case email = "email"
         case phoneNumber = "phone_number"
-        case favorite
+        case favorite,profilePicURLString
     }
 }
 

@@ -30,7 +30,7 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
     
     private var viewModel: ContactDetailsProtocol?
     var contactId: Int?
-    private var isFavourite = false
+    private var contactDetails: ContactDetails? = nil
     
     //MARK:- View Life Cycle
     
@@ -40,11 +40,24 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
         fetchContactDetails()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchContactDetails()
+    }
+    
     override func viewWillLayoutSubviews() {
         profileImageView.addCircularBorder()
     }
     //MARK:- Action
     
+    @IBAction func didTapEdit(_ sender: Any) {
+        if let createEditVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.createEditVC) as? CreateEditViewController {
+            
+            
+            createEditVC.contactDetails = self.contactDetails
+            self.navigationController?.pushViewController(createEditVC, animated: true)
+        }
+    }
     @IBAction func didTapMessage(_ sender: Any) {
         if let phoneNo = phoneNumberLabel.text, phoneNo != "" {
             let sms: String = "sms:+\(phoneNo)"
@@ -76,7 +89,8 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
     }
     
     @IBAction func didTapFavourite(_ sender: Any) {
-        viewModel?.updateFavourite(contactId: /self.contactId, isFavourite: !isFavourite)
+        guard let contactDetails = contactDetails else { return }
+        viewModel?.updateFavourite(contactId: /self.contactId, isFavourite: !(/contactDetails.isFavorite))
     }
     
     @IBAction func didTapDelete(_ sender: Any) {
@@ -92,7 +106,8 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
         viewModel?.onSuccess = { contactDetails in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.updateUIWith(contactDetails: contactDetails)
+                self.contactDetails = contactDetails
+                self.updateUI()
             }
         }
         viewModel?.onError = { error in
@@ -123,14 +138,15 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
             self.navigationController?.popViewController(animated: true)
         }
     }
-    private func updateUIWith(contactDetails: ContactDetails) {
+    private func updateUI() {
+        guard let contactDetails = contactDetails else { return }
+        
         profileImageView.downloadImage(urlString: /contactDetails.profilePicURLString)
         fullNameLabel.text = /contactDetails.firstName + " " + /contactDetails.lastName
-        emailIdLabel.text = contactDetails.email
-        phoneNumberLabel.text = contactDetails.phoneNumber
+        emailIdLabel.text = /contactDetails.email
+        phoneNumberLabel.text = /contactDetails.phoneNumber
         favouriteButton.setImage(/contactDetails.isFavorite ? #imageLiteral(resourceName: "favourite_button_selected") : #imageLiteral(resourceName: "favourite_button"), for: .normal)
         
-        isFavourite = /contactDetails.isFavorite
         if let phoneNo = phoneNumberLabel.text, phoneNo.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
             messageButton.enableView()
             callButton.enableView()

@@ -28,8 +28,9 @@
 		3B76DD0923A23A7600EB6C08 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD0823A23A7600EB6C08 /* GradientView.swift */; };
 		3B76DD0B23A24C8200EB6C08 /* CreateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD0A23A24C8200EB6C08 /* CreateEditViewModel.swift */; };
 		3B76DD0D23A24E9300EB6C08 /* CreateContactRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD0C23A24E9300EB6C08 /* CreateContactRequest.swift */; };
-		3B76DD0F23A2522700EB6C08 /* CreateEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD0E23A2522700EB6C08 /* CreateEditModel.swift */; };
 		3B76DD1223A252F400EB6C08 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD1123A252F400EB6C08 /* Encodable+Extensions.swift */; };
+		3B76DD1423A2793D00EB6C08 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD1323A2793D00EB6C08 /* UIViewController+Extension.swift */; };
+		3B76DD1623A288C800EB6C08 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD1523A288C800EB6C08 /* ValidationError.swift */; };
 		3BC0C4DB23A0F93E0012205F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0C4DA23A0F93E0012205F /* AppDelegate.swift */; };
 		3BC0C4DF23A0F93E0012205F /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0C4DE23A0F93E0012205F /* ContactsListViewController.swift */; };
 		3BC0C4E223A0F93E0012205F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0C4E023A0F93E0012205F /* Main.storyboard */; };
@@ -59,8 +60,9 @@
 		3B76DD0823A23A7600EB6C08 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		3B76DD0A23A24C8200EB6C08 /* CreateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditViewModel.swift; sourceTree = "<group>"; };
 		3B76DD0C23A24E9300EB6C08 /* CreateContactRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactRequest.swift; sourceTree = "<group>"; };
-		3B76DD0E23A2522700EB6C08 /* CreateEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditModel.swift; sourceTree = "<group>"; };
 		3B76DD1123A252F400EB6C08 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
+		3B76DD1323A2793D00EB6C08 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		3B76DD1523A288C800EB6C08 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		3BC0C4D723A0F93E0012205F /* AssignmentGojek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignmentGojek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC0C4DA23A0F93E0012205F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BC0C4DE23A0F93E0012205F /* ContactsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				3B733DA123A11C0800018BEB /* Endpoints.swift */,
 				3B733D9F23A11BAB00018BEB /* ErrorCodes.swift */,
 				3B733D9D23A1192500018BEB /* APIRequest.swift */,
+				3B76DD1523A288C800EB6C08 /* ValidationError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -162,7 +165,6 @@
 		3B76DD0323A2291300EB6C08 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3B76DD0E23A2522700EB6C08 /* CreateEditModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +191,7 @@
 				3B733DAD23A13CDC00018BEB /* ImageView+Extensions.swift */,
 				3B733DAF23A13E6800018BEB /* UIView+Extensions.swift */,
 				3B76DD1123A252F400EB6C08 /* Encodable+Extensions.swift */,
+				3B76DD1323A2793D00EB6C08 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				3B733DB023A13E6800018BEB /* UIView+Extensions.swift in Sources */,
 				3B733D9923A10DE700018BEB /* ContactsTableViewCell.swift in Sources */,
 				3B733DBC23A15EF200018BEB /* ModifyContactDetailsRequest.swift in Sources */,
+				3B76DD1623A288C800EB6C08 /* ValidationError.swift in Sources */,
 				3BC0C4DF23A0F93E0012205F /* ContactsListViewController.swift in Sources */,
 				3BC0C4DB23A0F93E0012205F /* AppDelegate.swift in Sources */,
 				3B733D9C23A118FF00018BEB /* APIClient.swift in Sources */,
@@ -368,8 +372,8 @@
 				3B733DA023A11BAB00018BEB /* ErrorCodes.swift in Sources */,
 				3B76DD1223A252F400EB6C08 /* Encodable+Extensions.swift in Sources */,
 				3B733DAE23A13CDC00018BEB /* ImageView+Extensions.swift in Sources */,
-				3B76DD0F23A2522700EB6C08 /* CreateEditModel.swift in Sources */,
 				3B76DD0923A23A7600EB6C08 /* GradientView.swift in Sources */,
+				3B76DD1423A2793D00EB6C08 /* UIViewController+Extension.swift in Sources */,
 				3B733DA723A1341300018BEB /* ContactsListViewModel.swift in Sources */,
 				3B733DA923A1349F00018BEB /* Contact.swift in Sources */,
 				3B76DD0B23A24C8200EB6C08 /* CreateEditViewModel.swift in Sources */,

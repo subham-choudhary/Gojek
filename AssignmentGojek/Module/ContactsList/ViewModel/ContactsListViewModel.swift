@@ -30,7 +30,6 @@ class ContactsListViewModel : ContactsListProtocol {
             switch result {
             case .success(let model):
                 self.onSuccess(model)
-                print(model)
             case .failure(let error):
                 self.onError(error)
             }

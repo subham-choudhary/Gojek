@@ -42,9 +42,25 @@ class APIClient {
             do {
                 if let httpStatusCode =  response as? HTTPURLResponse {
                     print("Status code is \(httpStatusCode.statusCode)")
+                    
                     if httpStatusCode.status?.responseType == .success {
                         let model : T = try JSONDecoder().decode(T.self, from: data!)
                         completion(.success(model))
+                        
+                    } else if httpStatusCode.status == HTTPStatusCode.validationError {
+                       
+                    let model = try JSONDecoder().decode(ValidationError.self, from: data!)
+                        var errorString = "422@"
+                        if let errors = model.errors {
+                            for err in errors {
+                                errorString += err + "@"
+                            }
+                        }
+                        let clientError = MyError(description: errorString , code: 422)
+                       completion(.failure(clientError))
+                        
+                    } else {
+                        completion(.failure(MyError(description: "Connection error! Please try again later.", code: nil)))
                     }
                 }
                 else {
