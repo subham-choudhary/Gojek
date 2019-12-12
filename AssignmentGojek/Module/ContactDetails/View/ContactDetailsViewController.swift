@@ -110,6 +110,14 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
                 self.updateUI()
             }
         }
+        
+        viewModel?.onSuccessDelete = {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        
         viewModel?.onError = { error in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }

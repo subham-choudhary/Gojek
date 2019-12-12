@@ -11,6 +11,7 @@ import Foundation
 protocol ContactDetailsProtocol {
     var onError : (Error) -> Void { get set}
     var onSuccess : (ContactDetails) -> Void { get set }
+    var onSuccessDelete: () -> Void { get set }
     var addRemoveLoader : (Bool) -> Void { get set}
     func getContactDetails(contactId: Int)
     func deleteContact(contactId: Int)
@@ -21,6 +22,7 @@ class ContactDetailsViewModel : ContactDetailsProtocol {
 
     var onError: (Error) -> Void = {_ in}
     var onSuccess: (ContactDetails) -> Void = {_ in }
+    var onSuccessDelete: () -> Void = {}
     var addRemoveLoader: (Bool) -> Void = {_ in}
     
     func getContactDetails(contactId: Int) {
@@ -39,11 +41,15 @@ class ContactDetailsViewModel : ContactDetailsProtocol {
         addRemoveLoader(true)
         let request = ModifyContactDetailsRequest(contactId: contactId, requestType: requestType, postParameters: (isFavourite != nil ? ["favorite": isFavourite!] : nil))
         
-        APIClient().fetchData(apiRequest: request) {(result : Result<ContactDetails,Error>) in
+        APIClient().fetchData(apiRequest: request) {(result : Result<ContactDetails?,Error>) in
             self.addRemoveLoader(false)
             switch result {
             case .success(let model):
-                self.onSuccess(model)
+                if let model = model {
+                    self.onSuccess(model)
+                } else {
+                    self.onSuccessDelete()
+                }
             case .failure(let error):
                 self.onError(error)
             }

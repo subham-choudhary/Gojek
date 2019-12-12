@@ -21,8 +21,16 @@ enum HTTPStatusCode: Int, Error {
 
     case notFound = 404
     case validationError = 422
-    case success = 200
-    case success1 = 201
+    case ok = 200
+    case created = 201
+    case accepted = 202
+    case nonAuthoritativeInformation = 203
+    case noContent = 204
+    case resetContent = 205
+    case partialContent = 206
+    case multiStatus = 207
+    case alreadyReported = 208
+    case IMUsed = 226
     case internalServerError = 500
     
     var responseType: ResponseType {

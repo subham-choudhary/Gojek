@@ -701,7 +701,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.95935858409999997" green="0.95472400150000003" blue="0.96399316660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KtJ-7S-JUf" firstAttribute="leading" secondItem="gop-ie-44L" secondAttribute="leading" id="9BA-gf-hWf"/>
                             <constraint firstAttribute="bottom" secondItem="KtJ-7S-JUf" secondAttribute="bottom" id="IQ4-vk-lea"/>

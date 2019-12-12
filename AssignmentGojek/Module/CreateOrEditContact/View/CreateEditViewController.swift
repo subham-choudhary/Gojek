@@ -52,7 +52,9 @@ class CreateEditViewController: UIViewController {
         switch vcType {
         case .Create: viewModel?.createContactsWith(firstName: textFields[0].text, lastName: textFields[1].text, phoneNo: textFields[2].text, email: textFields[3].text)
         
-        case .Edit: viewModel?.updateContactsWith(id:/contactDetails?.id ,firstName: textFields[0].text, lastName: textFields[1].text, phoneNo: textFields[2].text, email: textFields[3].text)
+        case .Edit:
+            guard let contactDetails = contactDetails else { return }
+            viewModel?.updateContactsWith(id: /contactDetails.id ,firstName: textFields[0].text, lastName: textFields[1].text, phoneNo: textFields[2].text, email: textFields[3].text, isFavourite: contactDetails.isFavorite)
         }
         
     }
@@ -97,9 +99,9 @@ class CreateEditViewController: UIViewController {
                 if let errorMessages = self.getStatusCodeIfInvalid(error: error) {
                     message = errorMessages
                 } else {
-                    message = "Could not save! Please try again later"
+                    message = error.localizedDescription
                 }
-                self.showAlertWith(message: message) {}
+                self.showAlertWith(message: message)
             }
         }
         viewModel?.addRemoveLoader = { (shouldAddLoader) in

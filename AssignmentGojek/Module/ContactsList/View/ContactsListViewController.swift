@@ -39,11 +39,18 @@ class ContactsListViewController: UIViewController {
         viewModel = ContactsListViewModel()
         viewModel?.onSuccess = { contacts in
             DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
+                guard let self = self, let contacts = contacts  else { return }
                 self.contactsList = contacts
                 self.tableView.reloadData()
             }
         }
+        viewModel?.onError = { error in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.showAlertWith(message: error.localizedDescription)
+            }
+        }
+        
         viewModel?.addRemoveLoader = { (shouldAddLoader) in
             if shouldAddLoader {
                 DispatchQueue.main.async {

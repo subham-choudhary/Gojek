@@ -31,7 +31,7 @@ struct MyError: LocalizedError, Equatable {
 
 class APIClient {
        
-    func fetchData<T:Codable>(apiRequest:APIRequest,completion:@escaping (_ result:Result<T,Error>) -> Void) {
+    func fetchData<T:Codable>(apiRequest:APIRequest,completion:@escaping (_ result:Result<T?,Error>) -> Void) {
         let request = apiRequest.request()
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil {
@@ -42,7 +42,12 @@ class APIClient {
             do {
                 if let httpStatusCode =  response as? HTTPURLResponse {
                     print("Status code is \(httpStatusCode.statusCode)")
-                    
+                    if let nsdata = data as? NSData {
+                        if nsdata.length == 0 {
+                            completion(.success(nil))
+                            return
+                        }
+                    }
                     if httpStatusCode.status?.responseType == .success {
                         let model : T = try JSONDecoder().decode(T.self, from: data!)
                         completion(.success(model))
