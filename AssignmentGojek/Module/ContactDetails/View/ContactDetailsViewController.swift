@@ -9,11 +9,7 @@
 import UIKit
 import MessageUI
 
-class ContactDetailsViewController: UIViewController, MFMessageComposeViewControllerDelegate {
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        
-    }
-    
+class ContactDetailsViewController: UIViewController {
 
     //MARK:- Outlets
     
@@ -30,7 +26,8 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
     
     private var viewModel: ContactDetailsProtocol?
     var contactId: Int?
-    private var contactDetails: ContactDetails? = nil
+    weak var delegate: DataTransferDelegate?
+    private var contactDetails: Contact? = nil
     
     //MARK:- View Life Cycle
     
@@ -89,13 +86,24 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
     }
     
     @IBAction func didTapFavourite(_ sender: Any) {
-        guard let contactDetails = contactDetails else { return }
-        viewModel?.updateFavourite(contactId: /self.contactId, isFavourite: !(/contactDetails.isFavorite))
+        if let contactDetails = self.contactDetails {
+            self.contactDetails?.isFavorite = !contactDetails.isFavorite!
+            favouriteButton.setImage(!(contactDetails.isFavorite!) ? #imageLiteral(resourceName: "favourite_button_selected") : #imageLiteral(resourceName: "favourite_button"), for: .normal)
+        }
+        
+        if let contactDetails = self.contactDetails {
+            viewModel?.updateFavourite(contactId: /self.contactId, isFavourite: (/contactDetails.isFavorite))
+            
+            delegate?.didUpdateContact(contactDetails: contactDetails)
+        }
+        
     }
     
     @IBAction func didTapDelete(_ sender: Any) {
         if let id = contactId {
+            delegate?.didDeleteContact(id: id)
             viewModel?.deleteContact(contactId: id)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -103,18 +111,24 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
     
     private func setupViewModel() {
         viewModel = ContactDetailsViewModel()
-        viewModel?.onSuccess = { contactDetails in
+        
+        viewModel?.onSuccessFetch = { contactDetails in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.contactDetails = contactDetails
                 self.updateUI()
             }
         }
-        
+        viewModel?.onSuccessUpdate = {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                //remove from saved queue
+            }
+        }
         viewModel?.onSuccessDelete = {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.navigationController?.popViewController(animated: true)
+                //remove from saved queue
             }
         }
         
@@ -123,20 +137,6 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
                 guard let self = self else { return }
                 self.showAlertWith(message: error.localizedDescription) { [weak self] in
                     self?.navigationController?.popViewController(animated: true)
-                }
-            }
-        }
-        viewModel?.addRemoveLoader = { (shouldAddLoader) in
-            if shouldAddLoader {
-                DispatchQueue.main.async {
-                    Utility.startSpinner(presentingView: self.view)
-                    self.view.isUserInteractionEnabled = false
-
-                }
-            }else {
-                DispatchQueue.main.async {
-                    Utility.stopSpinner(presentingView: self.view)
-                    self.view.isUserInteractionEnabled = true
                 }
             }
         }
@@ -172,3 +172,16 @@ class ContactDetailsViewController: UIViewController, MFMessageComposeViewContro
         }
     }
 }
+
+//extension ContactDetailsViewController: DataTransferDelegate {
+//    func didDeleteContact(id: Int) {
+//        <#code#>
+//    }
+//    func didCreateContact(contactDetails: ContactDetails) {
+//    }
+//    
+//    func didUpdateContact(contactDetails: ContactDetails) {
+//        self.contactDetails = contactDetails
+//        self.updateUI()
+//    }
+//}

@@ -12,7 +12,7 @@ import UIKit
 class Utility: NSObject {
     
     private static let spinner = UIActivityIndicatorView()
-    
+
     class func startSpinner(presentingView: UIView, color: UIColor = Color.greenColor) {
         DispatchQueue.main.async {
             spinner.hidesWhenStopped = true

@@ -24,7 +24,8 @@ class CreateEditViewController: UIViewController {
         case Edit
     }
     private var viewModel: CreateEditProtocol?
-    var contactDetails: ContactDetails? = nil
+    weak var delegate: DataTransferDelegate? = nil
+    var contactDetails: Contact? = nil
     private var vcType: VCType = .Create
     
     //MARK:- View Life Cycle
@@ -50,7 +51,15 @@ class CreateEditViewController: UIViewController {
     @IBAction func didTapSave(_ sender: Any) {
         view.endEditing(true)
         switch vcType {
-        case .Create: viewModel?.createContactsWith(firstName: textFields[0].text, lastName: textFields[1].text, phoneNo: textFields[2].text, email: textFields[3].text)
+        case .Create:
+            
+            viewModel?.createContactsWith(firstName: textFields[0].text, lastName: textFields[1].text, phoneNo: textFields[2].text, email: textFields[3].text)
+            
+            delegate?.didCreateContact(contact: Contact(id: nil, firstName: textFields[0].text, lastName: textFields[1].text, profilePicURLString: nil, isFavorite: true, urlString: nil))
+            
+            self.showAlertWith(message: "1 Contact Saved") {
+                self.navigationController?.popViewController(animated: true)
+            }
         
         case .Edit:
             guard let contactDetails = contactDetails else { return }
@@ -87,9 +96,6 @@ class CreateEditViewController: UIViewController {
         viewModel?.onSuccess = { contactDetails in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.showAlertWith(message: "Saved Successfully") {
-                    self.navigationController?.popViewController(animated: true)
-                }
             }
         }
         viewModel?.onError = { error in
@@ -102,20 +108,6 @@ class CreateEditViewController: UIViewController {
                     message = error.localizedDescription
                 }
                 self.showAlertWith(message: message)
-            }
-        }
-        viewModel?.addRemoveLoader = { (shouldAddLoader) in
-            if shouldAddLoader {
-                DispatchQueue.main.async {
-                    Utility.startSpinner(presentingView: self.view)
-                    self.view.isUserInteractionEnabled = false
-
-                }
-            }else {
-                DispatchQueue.main.async {
-                    Utility.stopSpinner(presentingView: self.view)
-                    self.view.isUserInteractionEnabled = true
-                }
             }
         }
     }

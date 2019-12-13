@@ -18,19 +18,28 @@ class ContactsListViewController: UIViewController {
     
     private var viewModel: ContactsListProtocol?
     private var contactsList: [Contact] = []
-    
     //MARK:- View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
         viewModel?.getContactsList()
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel?.getContactsList()
+        tableView.reloadData()
         clearSelection()
+    }
+    
+    //MARK:- Actions
+    
+    @IBAction func createContact(_ sender: Any) {
+        if let createVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.createEditVC) as? CreateEditViewController {
+            createVC.delegate = self
+            self.navigationController?.pushViewController(createVC, animated: true)
+        }
     }
     
     //MARK:- Functions
@@ -40,7 +49,10 @@ class ContactsListViewController: UIViewController {
         viewModel?.onSuccess = { contacts in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self, let contacts = contacts  else { return }
-                self.contactsList = contacts
+                print(DataManager.contacts)
+                DataManager.contacts = contacts
+                print(DataManager.contacts)
+                self.contactsList = DataManager.contacts
                 self.tableView.reloadData()
             }
         }
@@ -53,12 +65,12 @@ class ContactsListViewController: UIViewController {
         
         viewModel?.addRemoveLoader = { (shouldAddLoader) in
             if shouldAddLoader {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
                     Utility.startSpinner(presentingView: self.view)
                     self.view.isUserInteractionEnabled = false
-
                 }
-            }else {
+            } else {
                 DispatchQueue.main.async {
                     Utility.stopSpinner(presentingView: self.view)
                     self.view.isUserInteractionEnabled = true
@@ -93,11 +105,34 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
         if let contactDetailVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.contactDetailsVC) as? ContactDetailsViewController {
             
             contactDetailVC.contactId = contactsList[indexPath.row].id
+            contactDetailVC.delegate = self
             self.navigationController?.pushViewController(contactDetailVC, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
+    }
+}
+
+extension ContactsListViewController: DataTransferDelegate {
+    func didDeleteContact(id: Int) {
+        if let selectedRow = tableView.indexPathForSelectedRow?.row {
+            if contactsList[selectedRow].id == id {
+                contactsList.remove(at: selectedRow)
+            }
+        }
+    }
+    func didCreateContact(contact: Contact) {
+        contactsList.insert(contact, at: 0)
+    }
+    func didUpdateContact(contactDetails: Contact) {
+        if let selectedRow = tableView.indexPathForSelectedRow?.row {
+            if contactsList[selectedRow].id == contactDetails.id {
+                contactsList[selectedRow].firstName = contactDetails.firstName
+                contactsList[selectedRow].lastName = contactDetails.lastName
+                contactsList[selectedRow].isFavorite = contactDetails.isFavorite
+            }
+        }
     }
 }
