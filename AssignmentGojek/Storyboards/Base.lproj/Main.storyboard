@@ -27,13 +27,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fae-8a-Jgw" customClass="ShimmerView" customModule="AssignmentGojek" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="60" width="414" height="4"/>
-                                                    <color key="backgroundColor" red="0.4695130985" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="4" id="RcH-lh-QWv"/>
-                                                    </constraints>
-                                                </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_photo" translatesAutoresizingMaskIntoConstraints="NO" id="FdR-bf-c3u">
                                                     <rect key="frame" x="16" y="12" width="40" height="40"/>
                                                     <constraints>
@@ -62,14 +55,11 @@
                                                 <constraint firstItem="hEZ-Vp-cpi" firstAttribute="centerY" secondItem="FdR-bf-c3u" secondAttribute="centerY" id="Clf-EJ-xqu"/>
                                                 <constraint firstAttribute="bottom" secondItem="FdR-bf-c3u" secondAttribute="bottom" constant="12" id="G3x-zk-3CG"/>
                                                 <constraint firstItem="wcn-8V-IcA" firstAttribute="centerY" secondItem="FdR-bf-c3u" secondAttribute="centerY" id="L2N-fd-dIh"/>
-                                                <constraint firstAttribute="bottom" secondItem="fae-8a-Jgw" secondAttribute="bottom" id="LDJ-Z2-uL3"/>
                                                 <constraint firstItem="FdR-bf-c3u" firstAttribute="leading" secondItem="7Fu-0y-Xdq" secondAttribute="leading" constant="16" id="N75-mg-Gos"/>
-                                                <constraint firstItem="fae-8a-Jgw" firstAttribute="leading" secondItem="7Fu-0y-Xdq" secondAttribute="leading" id="QZI-v9-9Ad"/>
                                                 <constraint firstItem="wcn-8V-IcA" firstAttribute="leading" secondItem="hEZ-Vp-cpi" secondAttribute="trailing" constant="8" id="Spj-a9-UNQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="wcn-8V-IcA" secondAttribute="trailing" constant="36" id="cP2-Xg-mCC"/>
                                                 <constraint firstItem="hEZ-Vp-cpi" firstAttribute="leading" secondItem="FdR-bf-c3u" secondAttribute="trailing" constant="16" id="dZr-k1-8o3"/>
                                                 <constraint firstItem="FdR-bf-c3u" firstAttribute="top" secondItem="7Fu-0y-Xdq" secondAttribute="top" constant="12" id="mnC-Fi-bDV"/>
-                                                <constraint firstAttribute="trailing" secondItem="fae-8a-Jgw" secondAttribute="trailing" id="xWv-yd-AdB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,7 +68,6 @@
                                             <outlet property="fullNameLabel" destination="hEZ-Vp-cpi" id="aFK-Vd-xDW"/>
                                             <outlet property="interestedImageView" destination="wcn-8V-IcA" id="Eo0-8e-cIX"/>
                                             <outlet property="profileImageView" destination="FdR-bf-c3u" id="mdu-ED-mZS"/>
-                                            <outlet property="shimmerView" destination="fae-8a-Jgw" id="eJr-YC-odq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

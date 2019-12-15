@@ -15,7 +15,6 @@ class ContactsTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var interestedImageView: UIImageView!
-    @IBOutlet weak var shimmerView: UIView!
     
     //MARK:- Stored Properties
     var viewModel: ContactsTableViewCellProtocol? = nil
@@ -28,7 +27,7 @@ class ContactsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        shimmerView.stopShimmeringAnimation()
+        fullNameLabel.stopShimmeringAnimation()
     }
     
     //MARK:- Custom Functions

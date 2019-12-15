@@ -22,7 +22,6 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         heading.startShimmeringAnimation()
         navigationController?.navigationBar.isHidden = true
         setupViewModel()
@@ -49,7 +48,10 @@ class SplashViewController: UIViewController {
         viewModel?.onError = { error in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.showAlertWith(message: error.localizedDescription)
+                if let contactListVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.contactListVC) as? ContactsListViewController {
+                    self.navigationController?.pushViewController(contactListVC, animated: true)
+                    self.heading.stopShimmeringAnimation()
+                }
             }
         }
     }

@@ -119,12 +119,12 @@ class ContactDetailsViewController: UIViewController {
                 self.updateUI()
             }
         }
-        viewModel?.onError = { error in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.showAlertWith(message: error.localizedDescription)
-            }
-        }
+//        viewModel?.onError = { error in
+//            DispatchQueue.main.async { [weak self] in
+//                guard let self = self else { return }
+//                self.showAlertWith(message: error.localizedDescription)
+//            }
+//        }
     }
     
     private func updateUI() {

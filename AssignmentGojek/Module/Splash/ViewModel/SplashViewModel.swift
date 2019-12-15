@@ -27,7 +27,6 @@ class SplashViewModel : SplashProtocol {
     
     func getContactsList() {
         addRemoveLoader(true)
-    
         let request = GetContactListRequest()
         APIClient().fetchData(apiRequest: request) {(result : Result<[Contact]?,Error>) in
             self.addRemoveLoader(false)
