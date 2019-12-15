@@ -19,7 +19,7 @@ extension UIImageView {
             faliure?()
             return }
         
-        image = nil
+        image = #imageLiteral(resourceName: "placeholder_photo")
         
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) as? UIImage {
             self.image = imageFromCache

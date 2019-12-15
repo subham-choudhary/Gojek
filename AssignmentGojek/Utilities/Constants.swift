@@ -12,6 +12,7 @@ import UIKit
 struct StoryboardIdentifiers {
     static let contactDetailsVC = "ContactDetailsViewController"
     static let createEditVC = "CreateEditViewController"
+    static let contactListVC = "ContactsListViewController"
 }
 
 struct Color {
@@ -20,4 +21,8 @@ struct Color {
 
 struct FileName {
     static let plist = "Contacts"
+}
+
+struct APPERROR {
+    static let CommonAppError = "Something Went Wrong!"
 }

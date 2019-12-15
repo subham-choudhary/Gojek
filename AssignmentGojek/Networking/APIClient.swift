@@ -41,7 +41,6 @@ class APIClient {
             }
             do {
                 if let httpStatusCode =  response as? HTTPURLResponse {
-                    print("Status code is \(httpStatusCode.statusCode)")
                     if let nsdata = data as? NSData {
                         if nsdata.length == 0 {
                             completion(.success(nil))

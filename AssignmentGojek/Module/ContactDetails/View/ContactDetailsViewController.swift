@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 class ContactDetailsViewController: UIViewController {
-
+    
     //MARK:- Outlets
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -25,33 +25,33 @@ class ContactDetailsViewController: UIViewController {
     //MARK:- Stored Properties
     
     private var viewModel: ContactDetailsProtocol?
-    var contactId: Int?
-    weak var delegate: DataTransferDelegate?
-    private var contactDetails: Contact? = nil
-    
-    //MARK:- View Life Cycle
+    var contact: Contact? = nil
+    private var isEdited: String? = ""
+    //MARK:- Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
-        fetchContactDetails()
+        viewModel?.getContactDetails(contactId: /contact?.id.value)
+        updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchContactDetails()
+        updateUI()
+        isEdited = contact?.edited
     }
     
     override func viewWillLayoutSubviews() {
         profileImageView.addCircularBorder()
     }
-    //MARK:- Action
+    
+    //MARK:- Triggers
     
     @IBAction func didTapEdit(_ sender: Any) {
         if let createEditVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.createEditVC) as? CreateEditViewController {
             
-            
-            createEditVC.contactDetails = self.contactDetails
+            createEditVC.contact = self.contact
             self.navigationController?.pushViewController(createEditVC, animated: true)
         }
     }
@@ -77,85 +77,67 @@ class ContactDetailsViewController: UIViewController {
         guard let email = emailIdLabel.text else { return }
         
         if let url = URL(string: "mailto:\(email)") {
-          if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url)
-          } else {
-            UIApplication.shared.openURL(url)
-          }
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
         }
     }
     
     @IBAction func didTapFavourite(_ sender: Any) {
-        if let contactDetails = self.contactDetails {
-            self.contactDetails?.isFavorite = !contactDetails.isFavorite!
-            favouriteButton.setImage(!(contactDetails.isFavorite!) ? #imageLiteral(resourceName: "favourite_button_selected") : #imageLiteral(resourceName: "favourite_button"), for: .normal)
+        if let contact = self.contact {
+            RealmService.shared.write { [weak self] (realm) in
+                guard let self = self else { return }
+                self.contact!.isFavorite.value = !contact.isFavorite.value!
+            }
         }
-        
-        if let contactDetails = self.contactDetails {
-            viewModel?.updateFavourite(contactId: /self.contactId, isFavourite: (/contactDetails.isFavorite))
-            
-            delegate?.didUpdateContact(contactDetails: contactDetails)
-        }
-        
+        favouriteButton.setImage((/self.contact!.isFavorite.value) ? #imageLiteral(resourceName: "favourite_button_selected") : #imageLiteral(resourceName: "favourite_button"), for: .normal)
+        viewModel?.updateFavourite(contactId: /self.contact!.id.value, isFavourite: (/self.contact!.isFavorite.value))
     }
     
+    
     @IBAction func didTapDelete(_ sender: Any) {
-        if let id = contactId {
-            delegate?.didDeleteContact(id: id)
+        if let id = contact?.id.value {
             viewModel?.deleteContact(contactId: id)
+            RealmService.shared.deleteContact(contact!)
             self.navigationController?.popViewController(animated: true)
         }
     }
     
-    //MARK:- Functions
+    //MARK:- Custom Functions
     
     private func setupViewModel() {
         viewModel = ContactDetailsViewModel()
         
-        viewModel?.onSuccessFetch = { contactDetails in
+        viewModel?.onSuccessFetch = { _contact in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.contactDetails = contactDetails
+                _contact.edited = self.isEdited
+                RealmService.shared.update(_contact)
+                self.contact = _contact
                 self.updateUI()
             }
         }
-        viewModel?.onSuccessUpdate = {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                //remove from saved queue
-            }
-        }
-        viewModel?.onSuccessDelete = {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                //remove from saved queue
-            }
-        }
-        
         viewModel?.onError = { error in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.showAlertWith(message: error.localizedDescription) { [weak self] in
-                    self?.navigationController?.popViewController(animated: true)
-                }
+                self.showAlertWith(message: error.localizedDescription)
             }
         }
     }
-    private func fetchContactDetails() {
-        if let contactId = contactId {
-            viewModel?.getContactDetails(contactId: contactId)
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
+    
     private func updateUI() {
-        guard let contactDetails = contactDetails else { return }
+        guard let contact = contact else {
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
         
-        profileImageView.downloadImage(urlString: /contactDetails.profilePicURLString)
-        fullNameLabel.text = /contactDetails.firstName + " " + /contactDetails.lastName
-        emailIdLabel.text = /contactDetails.email
-        phoneNumberLabel.text = /contactDetails.phoneNumber
-        favouriteButton.setImage(/contactDetails.isFavorite ? #imageLiteral(resourceName: "favourite_button_selected") : #imageLiteral(resourceName: "favourite_button"), for: .normal)
+        profileImageView.downloadImage(urlString: /contact.profilePicURLString)
+        fullNameLabel.text = /contact.firstName + " " + /contact.lastName
+        emailIdLabel.text = /contact.email
+        phoneNumberLabel.text = /contact.phoneNumber
+        favouriteButton.setImage(/contact.isFavorite.value ? #imageLiteral(resourceName: "favourite_button_selected") : #imageLiteral(resourceName: "favourite_button"), for: .normal)
         
         if let phoneNo = phoneNumberLabel.text, phoneNo.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
             messageButton.enableView()
@@ -172,16 +154,3 @@ class ContactDetailsViewController: UIViewController {
         }
     }
 }
-
-//extension ContactDetailsViewController: DataTransferDelegate {
-//    func didDeleteContact(id: Int) {
-//        <#code#>
-//    }
-//    func didCreateContact(contactDetails: ContactDetails) {
-//    }
-//    
-//    func didUpdateContact(contactDetails: ContactDetails) {
-//        self.contactDetails = contactDetails
-//        self.updateUI()
-//    }
-//}

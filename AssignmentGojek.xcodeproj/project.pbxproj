@@ -3,17 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B28849523A37AF500F811FB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B28849423A37AF500F811FB /* RealmService.swift */; };
+		3B28849923A3B90800F811FB /* ContactsTableViewCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B28849823A3B90800F811FB /* ContactsTableViewCellVM.swift */; };
 		3B733D9923A10DE700018BEB /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733D9823A10DE700018BEB /* ContactsTableViewCell.swift */; };
 		3B733D9C23A118FF00018BEB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733D9B23A118FF00018BEB /* APIClient.swift */; };
 		3B733D9E23A1192500018BEB /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733D9D23A1192500018BEB /* APIRequest.swift */; };
 		3B733DA023A11BAB00018BEB /* ErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733D9F23A11BAB00018BEB /* ErrorCodes.swift */; };
 		3B733DA223A11C0800018BEB /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733DA123A11C0800018BEB /* Endpoints.swift */; };
 		3B733DA423A11C8800018BEB /* GetContactListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733DA323A11C8800018BEB /* GetContactListRequest.swift */; };
-		3B733DA723A1341300018BEB /* ContactsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733DA623A1341300018BEB /* ContactsListViewModel.swift */; };
+		3B733DA723A1341300018BEB /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733DA623A1341300018BEB /* SplashViewModel.swift */; };
 		3B733DA923A1349F00018BEB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733DA823A1349F00018BEB /* Contact.swift */; };
 		3B733DAC23A13B4B00018BEB /* PrefixOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733DAB23A13B4B00018BEB /* PrefixOperator.swift */; };
 		3B733DB623A1573200018BEB /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733DB523A1573200018BEB /* ContactDetailsViewController.swift */; };
@@ -26,6 +28,8 @@
 		3B76DD0B23A24C8200EB6C08 /* CreateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD0A23A24C8200EB6C08 /* CreateEditViewModel.swift */; };
 		3B76DD0D23A24E9300EB6C08 /* CreateContactRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD0C23A24E9300EB6C08 /* CreateContactRequest.swift */; };
 		3B76DD1623A288C800EB6C08 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD1523A288C800EB6C08 /* ValidationError.swift */; };
+		3B954ACA23A4EAC70072F01E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B954AC923A4EAC70072F01E /* String+Extension.swift */; };
+		3B954AD823A6725D0072F01E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B954AD723A6725D0072F01E /* SplashViewController.swift */; };
 		3BC0C4DB23A0F93E0012205F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0C4DA23A0F93E0012205F /* AppDelegate.swift */; };
 		3BC0C4DF23A0F93E0012205F /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0C4DE23A0F93E0012205F /* ContactsListViewController.swift */; };
 		3BC0C4E223A0F93E0012205F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0C4E023A0F93E0012205F /* Main.storyboard */; };
@@ -36,18 +40,20 @@
 		3BE02F7223A2ECAD00F8F830 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F6E23A2ECAC00F8F830 /* UIView+Extensions.swift */; };
 		3BE02F7323A2ECAD00F8F830 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F6F23A2ECAC00F8F830 /* UIViewController+Extension.swift */; };
 		3BE02F7423A2ECAD00F8F830 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F7023A2ECAC00F8F830 /* Encodable+Extensions.swift */; };
-		3BE02F7723A2F8C100F8F830 /* DataTransferProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F7623A2F8C100F8F830 /* DataTransferProtocols.swift */; };
-		3BE02F7B23A306EF00F8F830 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F7A23A306EF00F8F830 /* DataManager.swift */; };
+		3BE02F7B23A306EF00F8F830 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F7A23A306EF00F8F830 /* UserInfo.swift */; };
+		CE58C6C8CE59B80F0663F1A7 /* Pods_AssignmentGojek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15080D09594FDEA88EB7495 /* Pods_AssignmentGojek.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B28849423A37AF500F811FB /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		3B28849823A3B90800F811FB /* ContactsTableViewCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCellVM.swift; sourceTree = "<group>"; };
 		3B733D9823A10DE700018BEB /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		3B733D9B23A118FF00018BEB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		3B733D9D23A1192500018BEB /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		3B733D9F23A11BAB00018BEB /* ErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodes.swift; sourceTree = "<group>"; };
 		3B733DA123A11C0800018BEB /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		3B733DA323A11C8800018BEB /* GetContactListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContactListRequest.swift; sourceTree = "<group>"; };
-		3B733DA623A1341300018BEB /* ContactsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListViewModel.swift; sourceTree = "<group>"; };
+		3B733DA623A1341300018BEB /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		3B733DA823A1349F00018BEB /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		3B733DAB23A13B4B00018BEB /* PrefixOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixOperator.swift; sourceTree = "<group>"; };
 		3B733DB523A1573200018BEB /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +66,8 @@
 		3B76DD0A23A24C8200EB6C08 /* CreateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditViewModel.swift; sourceTree = "<group>"; };
 		3B76DD0C23A24E9300EB6C08 /* CreateContactRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactRequest.swift; sourceTree = "<group>"; };
 		3B76DD1523A288C800EB6C08 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		3B954AC923A4EAC70072F01E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		3B954AD723A6725D0072F01E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3BC0C4D723A0F93E0012205F /* AssignmentGojek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignmentGojek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC0C4DA23A0F93E0012205F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BC0C4DE23A0F93E0012205F /* ContactsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
@@ -72,8 +80,10 @@
 		3BE02F6E23A2ECAC00F8F830 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		3BE02F6F23A2ECAC00F8F830 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3BE02F7023A2ECAC00F8F830 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
-		3BE02F7623A2F8C100F8F830 /* DataTransferProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferProtocols.swift; sourceTree = "<group>"; };
-		3BE02F7A23A306EF00F8F830 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3BE02F7A23A306EF00F8F830 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		636BA030695DCC512A80432E /* Pods-AssignmentGojek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssignmentGojek.debug.xcconfig"; path = "Target Support Files/Pods-AssignmentGojek/Pods-AssignmentGojek.debug.xcconfig"; sourceTree = "<group>"; };
+		835FBE0C51125CA55D5162CD /* Pods-AssignmentGojek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssignmentGojek.release.xcconfig"; path = "Target Support Files/Pods-AssignmentGojek/Pods-AssignmentGojek.release.xcconfig"; sourceTree = "<group>"; };
+		F15080D09594FDEA88EB7495 /* Pods_AssignmentGojek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssignmentGojek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE58C6C8CE59B80F0663F1A7 /* Pods_AssignmentGojek.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,10 +125,11 @@
 			isa = PBXGroup;
 			children = (
 				3B733DAB23A13B4B00018BEB /* PrefixOperator.swift */,
-				3B76DD0823A23A7600EB6C08 /* GradientView.swift */,
 				3B733DBD23A1648D00018BEB /* Utility.swift */,
 				3B733DBF23A1650500018BEB /* Constants.swift */,
-				3BE02F7A23A306EF00F8F830 /* DataManager.swift */,
+				3BE02F7A23A306EF00F8F830 /* UserInfo.swift */,
+				3B28849423A37AF500F811FB /* RealmService.swift */,
+				3B76DD0823A23A7600EB6C08 /* GradientView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -127,16 +139,8 @@
 			children = (
 				3B733DB423A1570400018BEB /* View */,
 				3B733DB323A156FD00018BEB /* ViewModel */,
-				3B733DB223A156F700018BEB /* Model */,
 			);
 			path = ContactDetails;
-			sourceTree = "<group>";
-		};
-		3B733DB223A156F700018BEB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3B733DB323A156FD00018BEB /* ViewModel */ = {
@@ -160,16 +164,8 @@
 			children = (
 				3B76DD0523A2292400EB6C08 /* View */,
 				3B76DD0423A2291D00EB6C08 /* ViewModel */,
-				3B76DD0323A2291300EB6C08 /* Model */,
 			);
 			path = CreateOrEditContact;
-			sourceTree = "<group>";
-		};
-		3B76DD0323A2291300EB6C08 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3B76DD0423A2291D00EB6C08 /* ViewModel */ = {
@@ -188,11 +184,47 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3B954AD323A672190072F01E /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				3B954AD623A672380072F01E /* View */,
+				3B954AD523A672310072F01E /* ViewModel */,
+				3B954AD423A672230072F01E /* Model */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		3B954AD423A672230072F01E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B733DA823A1349F00018BEB /* Contact.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3B954AD523A672310072F01E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B733DA623A1341300018BEB /* SplashViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B954AD623A672380072F01E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B954AD723A6725D0072F01E /* SplashViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3BC0C4CE23A0F93E0012205F = {
 			isa = PBXGroup;
 			children = (
 				3BC0C4D923A0F93E0012205F /* AssignmentGojek */,
 				3BC0C4D823A0F93E0012205F /* Products */,
+				CD93A0C537EDDDD3871CAC02 /* Pods */,
+				89B13BC92696E82227E79EF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,7 +241,6 @@
 			children = (
 				3BC0C4F123A107320012205F /* Application */,
 				3BC0C4F023A1071C0012205F /* Module */,
-				3BE02F7523A2F86C00F8F830 /* Protocols */,
 				3BC0C4F223A1073F0012205F /* Storyboards */,
 				3B733D9A23A10F1E00018BEB /* Networking */,
 				3B733DAA23A13B2800018BEB /* Utilities */,
@@ -232,7 +263,6 @@
 			children = (
 				3BC0C4EE23A107030012205F /* View */,
 				3BC0C4F323A1078D0012205F /* ViewModel */,
-				3BC0C4F423A107A50012205F /* Model */,
 			);
 			path = ContactsList;
 			sourceTree = "<group>";
@@ -240,6 +270,7 @@
 		3BC0C4F023A1071C0012205F /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				3B954AD323A672190072F01E /* Splash */,
 				3BC0C4EF23A1070B0012205F /* ContactsList */,
 				3B733DB123A156E400018BEB /* ContactDetails */,
 				3B76DD0223A228F200EB6C08 /* CreateOrEditContact */,
@@ -270,23 +301,16 @@
 		3BC0C4F323A1078D0012205F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3B733DA623A1341300018BEB /* ContactsListViewModel.swift */,
+				3B28849823A3B90800F811FB /* ContactsTableViewCellVM.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3BC0C4F423A107A50012205F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3B733DA823A1349F00018BEB /* Contact.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3BE02F6C23A2ECAC00F8F830 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				3BE02F6D23A2ECAC00F8F830 /* ImageView+Extensions.swift */,
+				3B954AC923A4EAC70072F01E /* String+Extension.swift */,
 				3BE02F6E23A2ECAC00F8F830 /* UIView+Extensions.swift */,
 				3BE02F6F23A2ECAC00F8F830 /* UIViewController+Extension.swift */,
 				3BE02F7023A2ECAC00F8F830 /* Encodable+Extensions.swift */,
@@ -294,12 +318,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3BE02F7523A2F86C00F8F830 /* Protocols */ = {
+		89B13BC92696E82227E79EF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3BE02F7623A2F8C100F8F830 /* DataTransferProtocols.swift */,
+				F15080D09594FDEA88EB7495 /* Pods_AssignmentGojek.framework */,
 			);
-			path = Protocols;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD93A0C537EDDDD3871CAC02 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				636BA030695DCC512A80432E /* Pods-AssignmentGojek.debug.xcconfig */,
+				835FBE0C51125CA55D5162CD /* Pods-AssignmentGojek.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,9 +342,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BC0C4EB23A0F9430012205F /* Build configuration list for PBXNativeTarget "AssignmentGojek" */;
 			buildPhases = (
+				363B13116908EF4537CBC081 /* [CP] Check Pods Manifest.lock */,
 				3BC0C4D323A0F93E0012205F /* Sources */,
 				3BC0C4D423A0F93E0012205F /* Frameworks */,
 				3BC0C4D523A0F93E0012205F /* Resources */,
+				D9C0E3B99EADCC1060FD0022 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -368,6 +403,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		363B13116908EF4537CBC081 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AssignmentGojek-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9C0E3B99EADCC1060FD0022 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AssignmentGojek/Pods-AssignmentGojek-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AssignmentGojek/Pods-AssignmentGojek-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AssignmentGojek/Pods-AssignmentGojek-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3BC0C4D323A0F93E0012205F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -380,23 +457,26 @@
 				3BC0C4DF23A0F93E0012205F /* ContactsListViewController.swift in Sources */,
 				3BC0C4DB23A0F93E0012205F /* AppDelegate.swift in Sources */,
 				3B733D9C23A118FF00018BEB /* APIClient.swift in Sources */,
+				3B954ACA23A4EAC70072F01E /* String+Extension.swift in Sources */,
 				3B733DBE23A1648D00018BEB /* Utility.swift in Sources */,
 				3B733DB623A1573200018BEB /* ContactDetailsViewController.swift in Sources */,
 				3B733DB823A15CB000018BEB /* ContactDetailsViewModel.swift in Sources */,
 				3B733DA023A11BAB00018BEB /* ErrorCodes.swift in Sources */,
 				3BE02F6B23A2DEF700F8F830 /* SceneDelegate.swift in Sources */,
 				3B76DD0923A23A7600EB6C08 /* GradientView.swift in Sources */,
-				3B733DA723A1341300018BEB /* ContactsListViewModel.swift in Sources */,
+				3B733DA723A1341300018BEB /* SplashViewModel.swift in Sources */,
 				3BE02F7323A2ECAD00F8F830 /* UIViewController+Extension.swift in Sources */,
+				3B28849923A3B90800F811FB /* ContactsTableViewCellVM.swift in Sources */,
 				3B733DA923A1349F00018BEB /* Contact.swift in Sources */,
 				3B76DD0B23A24C8200EB6C08 /* CreateEditViewModel.swift in Sources */,
-				3BE02F7B23A306EF00F8F830 /* DataManager.swift in Sources */,
+				3BE02F7B23A306EF00F8F830 /* UserInfo.swift in Sources */,
 				3B733D9E23A1192500018BEB /* APIRequest.swift in Sources */,
-				3BE02F7723A2F8C100F8F830 /* DataTransferProtocols.swift in Sources */,
 				3B76DD0723A2296F00EB6C08 /* CreateEditViewController.swift in Sources */,
 				3B733DC023A1650500018BEB /* Constants.swift in Sources */,
 				3B733DA423A11C8800018BEB /* GetContactListRequest.swift in Sources */,
+				3B28849523A37AF500F811FB /* RealmService.swift in Sources */,
 				3BE02F7423A2ECAD00F8F830 /* Encodable+Extensions.swift in Sources */,
+				3B954AD823A6725D0072F01E /* SplashViewController.swift in Sources */,
 				3B76DD0D23A24E9300EB6C08 /* CreateContactRequest.swift in Sources */,
 				3B733DA223A11C0800018BEB /* Endpoints.swift in Sources */,
 				3BE02F7123A2ECAD00F8F830 /* ImageView+Extensions.swift in Sources */,
@@ -542,6 +622,7 @@
 		};
 		3BC0C4EC23A0F9430012205F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 636BA030695DCC512A80432E /* Pods-AssignmentGojek.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -552,7 +633,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojek;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojek8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -561,6 +642,7 @@
 		};
 		3BC0C4ED23A0F9430012205F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 835FBE0C51125CA55D5162CD /* Pods-AssignmentGojek.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -571,7 +653,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojek;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojek8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

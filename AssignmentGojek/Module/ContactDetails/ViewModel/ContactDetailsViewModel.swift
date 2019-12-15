@@ -22,25 +22,25 @@ protocol ContactDetailsProtocol {
 
 class ContactDetailsViewModel : ContactDetailsProtocol {
 
+    //MARK:- Stored Properties
+    
     var onError: (Error) -> Void = {_ in}
     var onSuccessFetch: (Contact) -> Void = {_ in }
     var onSuccessDelete: () -> Void = {}
     var onSuccessUpdate: () -> Void = {}
-    
     var addRemoveLoader: (Bool) -> Void = {_ in}
+    
+    //MARK:- Custom Functions
     
     func getContactDetails(contactId: Int) {
         callApiWith(contactId: contactId, requestType: .GET)
     }
-    
     func deleteContact(contactId: Int) {
          callApiWith(contactId: contactId, requestType: .DELETE)
     }
-    
     func updateFavourite(contactId: Int, isFavourite: Bool) {
         callApiWith(contactId: contactId, requestType: .PUT, isFavourite: isFavourite)
     }
-     
     func callApiWith(contactId: Int, requestType: RequestType, isFavourite: Bool? = nil) {
         addRemoveLoader(true)
         let request = ModifyContactDetailsRequest(contactId: contactId, requestType: requestType, postParameters: (isFavourite != nil ? ["favorite": isFavourite!] : nil))
