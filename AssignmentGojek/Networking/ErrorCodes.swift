@@ -34,7 +34,6 @@ enum HTTPStatusCode: Int, Error {
     case internalServerError = 500
     
     var responseType: ResponseType {
-        
         switch self.rawValue {
             
         case 100..<200:

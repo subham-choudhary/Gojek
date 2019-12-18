@@ -38,13 +38,35 @@ class ContactsTableViewCellVM : ContactsTableViewCellProtocol {
                     self.onSuccessFetch(model)
                 }
             case .failure(let error):
-                self.addRemoveLoader(false)
+//                self.addRemoveLoader(false)
                 self.onError(error)
             }
         }
     }
-
-    
 }
+
+class ContactsTableViewCellVM_Mock : ContactsTableViewCellProtocol {
+
+    //MARK:- Stored Properties
+    
+    var onSuccessFetch: (Contact) -> Void = {_ in }
+    var onError: (Error) -> Void = {_ in}
+    var addRemoveLoader: (Bool) -> Void = {_ in}
+    
+    //MARK:- Custom Functions
+    
+    func getContactDetails(contactId: Int) {
+        if contactId >= 0 && contactId <= 2 {
+            var contact = MockManager.shared.getContactsWithId(id: contactId)!
+            contact.phoneNumber = "1234567890"
+            contact.email = "mock@email.com"
+            contact.edited = "false"
+            onSuccessFetch(contact)
+        } else {
+            onError(MyError(description: "Mock error", code: 0))
+        }
+    }
+}
+
 
 

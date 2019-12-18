@@ -33,14 +33,16 @@ class ContactsTableViewCell: UITableViewCell {
     //MARK:- Custom Functions
     
     func configureCell(_ contact: Contact) {
+        //SAVING CONTACT
         self.contact = contact
         fullNameLabel.text = /contact.firstName + " " + /contact.lastName
         interestedImageView.image = /contact.isFavorite.value ? UIImage(imageLiteralResourceName: "home_favourite") : nil
         profileImageView.downloadImage(urlString: /contact.profilePicURLString)
         
         if contact.edited == nil || contact.edited == "true" {
-            viewModel?.getContactDetails(contactId: /contact.id.value)
             contentView.disableView(alpha: 0.7, withDuration: 0)
+            fullNameLabel.startShimmeringAnimation(animationSpeed: 1, repeatCount: MAXFLOAT)
+            viewModel?.getContactDetails(contactId: /contact.id.value)
         } else {
             contentView.enableView(withDuration: 0)
         }
@@ -52,9 +54,6 @@ class ContactsTableViewCell: UITableViewCell {
         viewModel?.onSuccessFetch = {  contact in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self, contact.id.value == self.contact?.id.value else {return}
-                UIView.animate(withDuration: 0.3) { [weak self] in
-                    self?.contentView.enableView()
-                }
                 contact.edited = "false"
                 RealmService.shared.update(contact)
             }
@@ -62,9 +61,8 @@ class ContactsTableViewCell: UITableViewCell {
         viewModel?.addRemoveLoader = { bool in
             DispatchQueue.main.async {[weak self] in
                 guard let self = self else {return}
-                if bool {
-                    self.fullNameLabel.startShimmeringAnimation(animationSpeed: 1, repeatCount: MAXFLOAT)
-                } else {
+                if !bool {
+                    self.contentView.enableView()
                     self.fullNameLabel.stopShimmeringAnimation()
                 }
             }

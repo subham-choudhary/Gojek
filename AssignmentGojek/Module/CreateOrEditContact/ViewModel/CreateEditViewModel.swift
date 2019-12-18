@@ -31,9 +31,7 @@ class CreateEditViewModel : CreateEditProtocol {
     
     func createContactsWith(_ contacts: Contact) {
         addRemoveLoader(true)
-
         guard let postParameters = contacts.dictionary else { return }
-        
         let request = CreateContactRequest(postParameters: postParameters)
         APIClient().fetchData(apiRequest: request) {(result : Result<Contact?,Error>) in
             self.addRemoveLoader(false)
@@ -48,7 +46,6 @@ class CreateEditViewModel : CreateEditProtocol {
     func updateContactsWith(_ contacts: Contact) {
         addRemoveLoader(true)
         guard let postParameters = contacts.dictionary else { return }
-        
         let request = ModifyContactDetailsRequest(contactId: /contacts.id.value, requestType: .PUT, postParameters: postParameters)
         APIClient().fetchData(apiRequest: request) {(result : Result<Contact?,Error>) in
             self.addRemoveLoader(false)
@@ -73,6 +70,28 @@ class CreateEditViewModel : CreateEditProtocol {
             }
         }
         return nil
+    }
+}
+
+
+class CreateEditViewModel_Mock : CreateEditProtocol {
+    
+    //MARK:- Stored Properties
+    
+    weak var vc: CreateEditViewController?
+    var onError: (Error) -> Void = {_ in}
+    var onSuccess: (Contact?) -> Void = {_ in }
+    var addRemoveLoader: (Bool) -> Void = {_ in}
+    //MARK:- Custom Functions
+    
+    func createContactsWith(_ contacts: Contact) {
+        onSuccess(contacts)
+    }
+    func updateContactsWith(_ contacts: Contact) {
+        onSuccess(contacts)
+    }
+    func getStatusCodeIfInvalid(error: Error) -> String? {
+        return  nil
     }
 }
 

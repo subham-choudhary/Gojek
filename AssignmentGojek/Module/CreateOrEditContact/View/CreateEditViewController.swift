@@ -23,9 +23,9 @@ class CreateEditViewController: UIViewController {
         case Create
         case Edit
     }
-    private var viewModel: CreateEditProtocol?
+    var viewModel: CreateEditProtocol?
     var contact: Contact? = nil
-    private var vcType: VCType = .Create
+    var vcType: VCType = .Create
     
     //MARK:- View Life Cycle
     
@@ -62,7 +62,7 @@ class CreateEditViewController: UIViewController {
     }
     //MARK:- Custom Functions
     
-    private func setupUI() {
+    func setupUI() {
         if let contact = contact {
             textFields[0].text = contact.firstName
             textFields[1].text = contact.lastName
@@ -94,7 +94,7 @@ class CreateEditViewController: UIViewController {
                         self.navigationController?.popViewController(animated: true)
                     }
                 case .Edit:
-                    RealmService.shared.write { [weak self] (_) in
+                    RealmService.shared.write { [weak self] in
                     guard let self = self else { return }
                         self.contact?.firstName = _contact.firstName
                         self.contact?.lastName = _contact.lastName
@@ -145,7 +145,7 @@ class CreateEditViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc private func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)

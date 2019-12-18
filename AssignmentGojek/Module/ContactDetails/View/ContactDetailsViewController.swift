@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MessageUI
 
 class ContactDetailsViewController: UIViewController {
     
@@ -24,7 +23,7 @@ class ContactDetailsViewController: UIViewController {
     
     //MARK:- Stored Properties
     
-    private var viewModel: ContactDetailsProtocol?
+    var viewModel: ContactDetailsProtocol?
     var contact: Contact? = nil
     private var isEdited: String? = ""
     //MARK:- Life Cycle
@@ -56,38 +55,20 @@ class ContactDetailsViewController: UIViewController {
         }
     }
     @IBAction func didTapMessage(_ sender: Any) {
-        if let phoneNo = phoneNumberLabel.text, phoneNo != "" {
-            let sms: String = "sms:+\(phoneNo)"
-            let strURL: String = sms.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            UIApplication.shared.open(URL.init(string: strURL)!, options: [:], completionHandler: nil)
-        }
+        viewModel?.message(phoneNo: phoneNumberLabel.text)
     }
     
     @IBAction func didTapCall(_ sender: Any) {
-        if let url = NSURL(string: "tel://\(/phoneNumberLabel.text)"), UIApplication.shared.canOpenURL(url as URL) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url as URL)
-            } else {
-                UIApplication.shared.openURL(url as URL)
-            }
-        }
+        viewModel?.call(phoneNo: phoneNumberLabel.text)
     }
     
     @IBAction func didTapEmail(_ sender: Any) {
-        guard let email = emailIdLabel.text else { return }
-        
-        if let url = URL(string: "mailto:\(email)") {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
+        viewModel?.email(email: emailIdLabel.text)
     }
     
     @IBAction func didTapFavourite(_ sender: Any) {
         if let contact = self.contact {
-            RealmService.shared.write { [weak self] (realm) in
+            RealmService.shared.write { [weak self] in
                 guard let self = self else { return }
                 self.contact!.isFavorite.value = !contact.isFavorite.value!
             }
@@ -119,15 +100,9 @@ class ContactDetailsViewController: UIViewController {
                 self.updateUI()
             }
         }
-//        viewModel?.onError = { error in
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self = self else { return }
-//                self.showAlertWith(message: error.localizedDescription)
-//            }
-//        }
     }
     
-    private func updateUI() {
+    func updateUI() {
         guard let contact = contact else {
             self.navigationController?.popViewController(animated: true)
             return

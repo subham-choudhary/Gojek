@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B28849523A37AF500F811FB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B28849423A37AF500F811FB /* RealmService.swift */; };
 		3B28849923A3B90800F811FB /* ContactsTableViewCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B28849823A3B90800F811FB /* ContactsTableViewCellVM.swift */; };
+		3B42FA5423A8C9E400E3D6D9 /* CreateEditVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42FA5323A8C9E400E3D6D9 /* CreateEditVCTests.swift */; };
 		3B733D9923A10DE700018BEB /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733D9823A10DE700018BEB /* ContactsTableViewCell.swift */; };
 		3B733D9C23A118FF00018BEB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733D9B23A118FF00018BEB /* APIClient.swift */; };
 		3B733D9E23A1192500018BEB /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B733D9D23A1192500018BEB /* APIRequest.swift */; };
@@ -30,23 +31,33 @@
 		3B76DD1623A288C800EB6C08 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B76DD1523A288C800EB6C08 /* ValidationError.swift */; };
 		3B954ACA23A4EAC70072F01E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B954AC923A4EAC70072F01E /* String+Extension.swift */; };
 		3B954AD823A6725D0072F01E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B954AD723A6725D0072F01E /* SplashViewController.swift */; };
-		3B954AE023A6DDCF0072F01E /* AssignmentGojekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B954ADF23A6DDCF0072F01E /* AssignmentGojekTests.swift */; };
+		3BB38CC323A8D8AF0025C068 /* AssignmentGojekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB38CC223A8D8AF0025C068 /* AssignmentGojekUITests.swift */; };
 		3BC0C4DB23A0F93E0012205F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0C4DA23A0F93E0012205F /* AppDelegate.swift */; };
 		3BC0C4DF23A0F93E0012205F /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0C4DE23A0F93E0012205F /* ContactsListViewController.swift */; };
 		3BC0C4E223A0F93E0012205F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0C4E023A0F93E0012205F /* Main.storyboard */; };
 		3BC0C4E423A0F9430012205F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0C4E323A0F9430012205F /* Assets.xcassets */; };
 		3BC0C4E723A0F9430012205F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0C4E523A0F9430012205F /* LaunchScreen.storyboard */; };
+		3BC6D2B223A6E83B00C4BC63 /* SplashUnitVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6D2B123A6E83B00C4BC63 /* SplashUnitVCTests.swift */; };
+		3BC6D2CA23A7756000C4BC63 /* MockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6D2C923A7756000C4BC63 /* MockManager.swift */; };
+		3BDBA50023A79D0E00F73434 /* ContactListVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBA4FF23A79D0E00F73434 /* ContactListVCTests.swift */; };
+		3BDBA50223A81C4C00F73434 /* ContactDetailsVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBA50123A81C4B00F73434 /* ContactDetailsVCTests.swift */; };
 		3BE02F6B23A2DEF700F8F830 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F6A23A2DEF700F8F830 /* SceneDelegate.swift */; };
 		3BE02F7123A2ECAD00F8F830 /* ImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F6D23A2ECAC00F8F830 /* ImageView+Extensions.swift */; };
 		3BE02F7223A2ECAD00F8F830 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F6E23A2ECAC00F8F830 /* UIView+Extensions.swift */; };
 		3BE02F7323A2ECAD00F8F830 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F6F23A2ECAC00F8F830 /* UIViewController+Extension.swift */; };
 		3BE02F7423A2ECAD00F8F830 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F7023A2ECAC00F8F830 /* Encodable+Extensions.swift */; };
-		3BE02F7B23A306EF00F8F830 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE02F7A23A306EF00F8F830 /* UserInfo.swift */; };
 		CE58C6C8CE59B80F0663F1A7 /* Pods_AssignmentGojek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15080D09594FDEA88EB7495 /* Pods_AssignmentGojek.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3B954AE223A6DDCF0072F01E /* PBXContainerItemProxy */ = {
+		3BB38CC523A8D8AF0025C068 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BC0C4CF23A0F93E0012205F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3BC0C4D623A0F93E0012205F;
+			remoteInfo = AssignmentGojek;
+		};
+		3BC6D2B423A6E83B00C4BC63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3BC0C4CF23A0F93E0012205F /* Project object */;
 			proxyType = 1;
@@ -58,6 +69,7 @@
 /* Begin PBXFileReference section */
 		3B28849423A37AF500F811FB /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		3B28849823A3B90800F811FB /* ContactsTableViewCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCellVM.swift; sourceTree = "<group>"; };
+		3B42FA5323A8C9E400E3D6D9 /* CreateEditVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditVCTests.swift; sourceTree = "<group>"; };
 		3B733D9823A10DE700018BEB /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		3B733D9B23A118FF00018BEB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		3B733D9D23A1192500018BEB /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -79,9 +91,9 @@
 		3B76DD1523A288C800EB6C08 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		3B954AC923A4EAC70072F01E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		3B954AD723A6725D0072F01E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		3B954ADD23A6DDCF0072F01E /* AssignmentGojekTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentGojekTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B954ADF23A6DDCF0072F01E /* AssignmentGojekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentGojekTests.swift; sourceTree = "<group>"; };
-		3B954AE123A6DDCF0072F01E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BB38CC023A8D8AF0025C068 /* AssignmentGojekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentGojekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BB38CC223A8D8AF0025C068 /* AssignmentGojekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentGojekUITests.swift; sourceTree = "<group>"; };
+		3BB38CC423A8D8AF0025C068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC0C4D723A0F93E0012205F /* AssignmentGojek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignmentGojek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC0C4DA23A0F93E0012205F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BC0C4DE23A0F93E0012205F /* ContactsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
@@ -89,19 +101,26 @@
 		3BC0C4E323A0F9430012205F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BC0C4E623A0F9430012205F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BC0C4E823A0F9430012205F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BC6D2AF23A6E83B00C4BC63 /* AssignmentGojekUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentGojekUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BC6D2B123A6E83B00C4BC63 /* SplashUnitVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUnitVCTests.swift; sourceTree = "<group>"; };
+		3BC6D2B323A6E83B00C4BC63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BC6D2C923A7756000C4BC63 /* MockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockManager.swift; sourceTree = "<group>"; };
+		3BD11E9B23A95D220063441C /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BD11E9E23A95DB20063441C /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BDBA4FF23A79D0E00F73434 /* ContactListVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListVCTests.swift; sourceTree = "<group>"; };
+		3BDBA50123A81C4B00F73434 /* ContactDetailsVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsVCTests.swift; sourceTree = "<group>"; };
 		3BE02F6A23A2DEF700F8F830 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3BE02F6D23A2ECAC00F8F830 /* ImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+Extensions.swift"; sourceTree = "<group>"; };
 		3BE02F6E23A2ECAC00F8F830 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		3BE02F6F23A2ECAC00F8F830 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3BE02F7023A2ECAC00F8F830 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
-		3BE02F7A23A306EF00F8F830 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		636BA030695DCC512A80432E /* Pods-AssignmentGojek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssignmentGojek.debug.xcconfig"; path = "Target Support Files/Pods-AssignmentGojek/Pods-AssignmentGojek.debug.xcconfig"; sourceTree = "<group>"; };
 		835FBE0C51125CA55D5162CD /* Pods-AssignmentGojek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssignmentGojek.release.xcconfig"; path = "Target Support Files/Pods-AssignmentGojek/Pods-AssignmentGojek.release.xcconfig"; sourceTree = "<group>"; };
 		F15080D09594FDEA88EB7495 /* Pods_AssignmentGojek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssignmentGojek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3B954ADA23A6DDCF0072F01E /* Frameworks */ = {
+		3BB38CBD23A8D8AF0025C068 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -113,6 +132,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE58C6C8CE59B80F0663F1A7 /* Pods_AssignmentGojek.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BC6D2AC23A6E83B00C4BC63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,12 +171,12 @@
 		3B733DAA23A13B2800018BEB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				3B733DAB23A13B4B00018BEB /* PrefixOperator.swift */,
-				3B733DBD23A1648D00018BEB /* Utility.swift */,
 				3B733DBF23A1650500018BEB /* Constants.swift */,
-				3BE02F7A23A306EF00F8F830 /* UserInfo.swift */,
-				3B28849423A37AF500F811FB /* RealmService.swift */,
 				3B76DD0823A23A7600EB6C08 /* GradientView.swift */,
+				3B733DAB23A13B4B00018BEB /* PrefixOperator.swift */,
+				3B28849423A37AF500F811FB /* RealmService.swift */,
+				3BC6D2C923A7756000C4BC63 /* MockManager.swift */,
+				3B733DBD23A1648D00018BEB /* Utility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -239,20 +265,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3B954ADE23A6DDCF0072F01E /* AssignmentGojekTests */ = {
+		3BB38CC123A8D8AF0025C068 /* AssignmentGojekUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3B954ADF23A6DDCF0072F01E /* AssignmentGojekTests.swift */,
-				3B954AE123A6DDCF0072F01E /* Info.plist */,
+				3BB38CC223A8D8AF0025C068 /* AssignmentGojekUITests.swift */,
+				3BB38CC423A8D8AF0025C068 /* Info.plist */,
 			);
-			path = AssignmentGojekTests;
+			path = AssignmentGojekUITests;
 			sourceTree = "<group>";
 		};
 		3BC0C4CE23A0F93E0012205F = {
 			isa = PBXGroup;
 			children = (
 				3BC0C4D923A0F93E0012205F /* AssignmentGojek */,
-				3B954ADE23A6DDCF0072F01E /* AssignmentGojekTests */,
+				3BC6D2B023A6E83B00C4BC63 /* AssignmentGojekUnitTests */,
+				3BB38CC123A8D8AF0025C068 /* AssignmentGojekUITests */,
 				3BC0C4D823A0F93E0012205F /* Products */,
 				CD93A0C537EDDDD3871CAC02 /* Pods */,
 				89B13BC92696E82227E79EF5 /* Frameworks */,
@@ -263,7 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				3BC0C4D723A0F93E0012205F /* AssignmentGojek.app */,
-				3B954ADD23A6DDCF0072F01E /* AssignmentGojekTests.xctest */,
+				3BC6D2AF23A6E83B00C4BC63 /* AssignmentGojekUnitTests.xctest */,
+				3BB38CC023A8D8AF0025C068 /* AssignmentGojekUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -338,6 +366,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		3BC6D2B023A6E83B00C4BC63 /* AssignmentGojekUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				3BC6D2B123A6E83B00C4BC63 /* SplashUnitVCTests.swift */,
+				3BDBA4FF23A79D0E00F73434 /* ContactListVCTests.swift */,
+				3BDBA50123A81C4B00F73434 /* ContactDetailsVCTests.swift */,
+				3B42FA5323A8C9E400E3D6D9 /* CreateEditVCTests.swift */,
+				3BC6D2B323A6E83B00C4BC63 /* Info.plist */,
+			);
+			path = AssignmentGojekUnitTests;
+			sourceTree = "<group>";
+		};
 		3BE02F6C23A2ECAC00F8F830 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +393,8 @@
 		89B13BC92696E82227E79EF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BD11E9E23A95DB20063441C /* RealmSwift.framework */,
+				3BD11E9B23A95D220063441C /* Realm.framework */,
 				F15080D09594FDEA88EB7495 /* Pods_AssignmentGojek.framework */,
 			);
 			name = Frameworks;
@@ -370,23 +412,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B954ADC23A6DDCF0072F01E /* AssignmentGojekTests */ = {
+		3BB38CBF23A8D8AF0025C068 /* AssignmentGojekUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B954AE423A6DDCF0072F01E /* Build configuration list for PBXNativeTarget "AssignmentGojekTests" */;
+			buildConfigurationList = 3BB38CC923A8D8AF0025C068 /* Build configuration list for PBXNativeTarget "AssignmentGojekUITests" */;
 			buildPhases = (
-				3B954AD923A6DDCF0072F01E /* Sources */,
-				3B954ADA23A6DDCF0072F01E /* Frameworks */,
-				3B954ADB23A6DDCF0072F01E /* Resources */,
+				3BB38CBC23A8D8AF0025C068 /* Sources */,
+				3BB38CBD23A8D8AF0025C068 /* Frameworks */,
+				3BB38CBE23A8D8AF0025C068 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3B954AE323A6DDCF0072F01E /* PBXTargetDependency */,
+				3BB38CC623A8D8AF0025C068 /* PBXTargetDependency */,
 			);
-			name = AssignmentGojekTests;
-			productName = AssignmentGojekTests;
-			productReference = 3B954ADD23A6DDCF0072F01E /* AssignmentGojekTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = AssignmentGojekUITests;
+			productName = AssignmentGojekUITests;
+			productReference = 3BB38CC023A8D8AF0025C068 /* AssignmentGojekUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		3BC0C4D623A0F93E0012205F /* AssignmentGojek */ = {
 			isa = PBXNativeTarget;
@@ -407,6 +449,24 @@
 			productReference = 3BC0C4D723A0F93E0012205F /* AssignmentGojek.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3BC6D2AE23A6E83B00C4BC63 /* AssignmentGojekUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3BC6D2B623A6E83B00C4BC63 /* Build configuration list for PBXNativeTarget "AssignmentGojekUnitTests" */;
+			buildPhases = (
+				3BC6D2AB23A6E83B00C4BC63 /* Sources */,
+				3BC6D2AC23A6E83B00C4BC63 /* Frameworks */,
+				3BC6D2AD23A6E83B00C4BC63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3BC6D2B523A6E83B00C4BC63 /* PBXTargetDependency */,
+			);
+			name = AssignmentGojekUnitTests;
+			productName = AssignmentGojekUnitTests;
+			productReference = 3BC6D2AF23A6E83B00C4BC63 /* AssignmentGojekUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -417,12 +477,16 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Subham Choudhary";
 				TargetAttributes = {
-					3B954ADC23A6DDCF0072F01E = {
+					3BB38CBF23A8D8AF0025C068 = {
 						CreatedOnToolsVersion = 11.2.1;
 						TestTargetID = 3BC0C4D623A0F93E0012205F;
 					};
 					3BC0C4D623A0F93E0012205F = {
 						CreatedOnToolsVersion = 11.2.1;
+					};
+					3BC6D2AE23A6E83B00C4BC63 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 3BC0C4D623A0F93E0012205F;
 					};
 				};
 			};
@@ -440,13 +504,14 @@
 			projectRoot = "";
 			targets = (
 				3BC0C4D623A0F93E0012205F /* AssignmentGojek */,
-				3B954ADC23A6DDCF0072F01E /* AssignmentGojekTests */,
+				3BC6D2AE23A6E83B00C4BC63 /* AssignmentGojekUnitTests */,
+				3BB38CBF23A8D8AF0025C068 /* AssignmentGojekUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3B954ADB23A6DDCF0072F01E /* Resources */ = {
+		3BB38CBE23A8D8AF0025C068 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -460,6 +525,13 @@
 				3BC0C4E723A0F9430012205F /* LaunchScreen.storyboard in Resources */,
 				3BC0C4E423A0F9430012205F /* Assets.xcassets in Resources */,
 				3BC0C4E223A0F93E0012205F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BC6D2AD23A6E83B00C4BC63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,11 +580,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3B954AD923A6DDCF0072F01E /* Sources */ = {
+		3BB38CBC23A8D8AF0025C068 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B954AE023A6DDCF0072F01E /* AssignmentGojekTests.swift in Sources */,
+				3BB38CC323A8D8AF0025C068 /* AssignmentGojekUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +611,6 @@
 				3B28849923A3B90800F811FB /* ContactsTableViewCellVM.swift in Sources */,
 				3B733DA923A1349F00018BEB /* Contact.swift in Sources */,
 				3B76DD0B23A24C8200EB6C08 /* CreateEditViewModel.swift in Sources */,
-				3BE02F7B23A306EF00F8F830 /* UserInfo.swift in Sources */,
 				3B733D9E23A1192500018BEB /* APIRequest.swift in Sources */,
 				3B76DD0723A2296F00EB6C08 /* CreateEditViewController.swift in Sources */,
 				3B733DC023A1650500018BEB /* Constants.swift in Sources */,
@@ -550,17 +621,34 @@
 				3B76DD0D23A24E9300EB6C08 /* CreateContactRequest.swift in Sources */,
 				3B733DA223A11C0800018BEB /* Endpoints.swift in Sources */,
 				3BE02F7123A2ECAD00F8F830 /* ImageView+Extensions.swift in Sources */,
+				3BC6D2CA23A7756000C4BC63 /* MockManager.swift in Sources */,
 				3B733DAC23A13B4B00018BEB /* PrefixOperator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BC6D2AB23A6E83B00C4BC63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BC6D2B223A6E83B00C4BC63 /* SplashUnitVCTests.swift in Sources */,
+				3B42FA5423A8C9E400E3D6D9 /* CreateEditVCTests.swift in Sources */,
+				3BDBA50023A79D0E00F73434 /* ContactListVCTests.swift in Sources */,
+				3BDBA50223A81C4C00F73434 /* ContactDetailsVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3B954AE323A6DDCF0072F01E /* PBXTargetDependency */ = {
+		3BB38CC623A8D8AF0025C068 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3BC0C4D623A0F93E0012205F /* AssignmentGojek */;
-			targetProxy = 3B954AE223A6DDCF0072F01E /* PBXContainerItemProxy */;
+			targetProxy = 3BB38CC523A8D8AF0025C068 /* PBXContainerItemProxy */;
+		};
+		3BC6D2B523A6E83B00C4BC63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3BC0C4D623A0F93E0012205F /* AssignmentGojek */;
+			targetProxy = 3BC6D2B423A6E83B00C4BC63 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -584,43 +672,41 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		3B954AE523A6DDCF0072F01E /* Debug */ = {
+		3BB38CC723A8D8AF0025C068 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GA839A65MF;
-				INFOPLIST_FILE = AssignmentGojekTests/Info.plist;
+				INFOPLIST_FILE = AssignmentGojekUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojekTests;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojekUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssignmentGojek.app/AssignmentGojek";
+				TEST_TARGET_NAME = AssignmentGojek;
 			};
 			name = Debug;
 		};
-		3B954AE623A6DDCF0072F01E /* Release */ = {
+		3BB38CC823A8D8AF0025C068 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GA839A65MF;
-				INFOPLIST_FILE = AssignmentGojekTests/Info.plist;
+				INFOPLIST_FILE = AssignmentGojekUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojekTests;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojekUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssignmentGojek.app/AssignmentGojek";
+				TEST_TARGET_NAME = AssignmentGojek;
 			};
 			name = Release;
 		};
@@ -778,14 +864,54 @@
 			};
 			name = Release;
 		};
+		3BC6D2B723A6E83B00C4BC63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GA839A65MF;
+				INFOPLIST_FILE = AssignmentGojekUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojekUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssignmentGojek.app/AssignmentGojek";
+			};
+			name = Debug;
+		};
+		3BC6D2B823A6E83B00C4BC63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GA839A65MF;
+				INFOPLIST_FILE = AssignmentGojekUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = abc.AssignmentGojekUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssignmentGojek.app/AssignmentGojek";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3B954AE423A6DDCF0072F01E /* Build configuration list for PBXNativeTarget "AssignmentGojekTests" */ = {
+		3BB38CC923A8D8AF0025C068 /* Build configuration list for PBXNativeTarget "AssignmentGojekUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3B954AE523A6DDCF0072F01E /* Debug */,
-				3B954AE623A6DDCF0072F01E /* Release */,
+				3BB38CC723A8D8AF0025C068 /* Debug */,
+				3BB38CC823A8D8AF0025C068 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -804,6 +930,15 @@
 			buildConfigurations = (
 				3BC0C4EC23A0F9430012205F /* Debug */,
 				3BC0C4ED23A0F9430012205F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3BC6D2B623A6E83B00C4BC63 /* Build configuration list for PBXNativeTarget "AssignmentGojekUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3BC6D2B723A6E83B00C4BC63 /* Debug */,
+				3BC6D2B823A6E83B00C4BC63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -18,6 +18,8 @@ class ContactsListViewController: UIViewController {
     //MARK:- Stored Properties
 
     var contactsList: [Contact] = []
+    var filteredContactsList = [Contact]()
+    var resultSearchController = UISearchController()
     
     //MARK:- View Life Cycle
     
@@ -51,6 +53,16 @@ class ContactsListViewController: UIViewController {
         tableView.tableFooterView = UIView()
         navigationController?.navigationBar.isHidden = false
         navigationItem.hidesBackButton = true
+        
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.obscuresBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            tableView.tableHeaderView = controller.searchBar
+            return controller
+        })()
+        tableView.reloadData()
     }
     
     private func clearSelection() {
@@ -64,21 +76,37 @@ class ContactsListViewController: UIViewController {
 
 extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactsList.count
+        if  (resultSearchController.isActive) {
+            return filteredContactsList.count
+        } else {
+            return contactsList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell") as? ContactsTableViewCell else { return UITableViewCell() }
-        cell.configureCell(contactsList[indexPath.row])
+        
+        if (resultSearchController.isActive) {
+            cell.configureCell(filteredContactsList[indexPath.row])
+        } else {
+            cell.configureCell(contactsList[indexPath.row])
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let selectedContact = RealmService.shared.getContactsWithId(id: /contactsList[indexPath.row].id.value),
-            selectedContact.edited == "false",
-            let contactDetailVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.contactDetailsVC) as? ContactDetailsViewController {
+        view.endEditing(true)
+        var selectedContact: Contact?
+        if resultSearchController.isActive {
+            selectedContact = RealmService.shared.getContactsWithId(id: /filteredContactsList[indexPath.row].id.value)
+            resultSearchController.isActive = false
+        } else {
+            selectedContact = RealmService.shared.getContactsWithId(id: /contactsList[indexPath.row].id.value)
+        }
+        if let selectedContact = selectedContact, let contactDetailVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifiers.contactDetailsVC) as? ContactDetailsViewController,
+            selectedContact.edited == "false" {
     
                 contactDetailVC.contact = selectedContact
                 self.navigationController?.pushViewController(contactDetailVC, animated: true)
@@ -89,5 +117,23 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
+    }
+}
+
+extension ContactsListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filteredContactsList.removeAll(keepingCapacity: false)
+        if let searchText = searchController.searchBar.text {
+            if searchText.trimmingCharacters(in: .whitespaces).count == 0 {
+                filteredContactsList = contactsList
+            } else {
+                filteredContactsList = contactsList.filter({ (contact) -> Bool in
+                    let fullname = /contact.firstName + " " + /contact.lastName
+                     return fullname.contains(searchText.lowercased())
+                })
+            }
+            self.tableView.reloadData()
+        }
     }
 }

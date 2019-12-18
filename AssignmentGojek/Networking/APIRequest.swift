@@ -27,11 +27,6 @@ extension APIRequest {
 
         let baseUrl = Endpoints.baseURL
         
-        if let userDefaults = UserDefaults(suiteName: "group.cowrksconnect.group") {
-            userDefaults.set(baseUrl, forKey: "baseURL")
-            userDefaults.synchronize()
-        }
-        
         guard let apiURL = URL(string: baseUrl) else {
             fatalError("Unable to create Base URL")
         }

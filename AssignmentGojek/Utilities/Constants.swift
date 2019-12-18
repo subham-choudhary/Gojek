@@ -13,6 +13,7 @@ struct StoryboardIdentifiers {
     static let contactDetailsVC = "ContactDetailsViewController"
     static let createEditVC = "CreateEditViewController"
     static let contactListVC = "ContactsListViewController"
+    static let splashVC = "SplashViewController"
 }
 
 struct Color {

@@ -13,6 +13,7 @@ class RealmService {
     
     private init() {}
     static let shared = RealmService()
+    var shouldMock = false
     
     var realm: Realm? {
         do {
@@ -23,7 +24,10 @@ class RealmService {
     }
     
     func createContactList(_ contacts: [Contact]) {
-        
+        if shouldMock {
+            MockManager.shared.DB = contacts
+            return
+        }
         do {
             try realm?.write {
             
@@ -33,11 +37,9 @@ class RealmService {
                     _ = Array(savedContacts).map {
                         savedDict[/$0.id.value] = $0
                     }
-                    
                     _ = contacts.map {
                         if let savedContact = savedDict[/$0.id.value] {
                             savedDict.removeValue(forKey: /$0.id.value)
-                            
                             if !(savedContact.firstName == $0.firstName && savedContact.lastName == $0.lastName && savedContact.isFavorite.value == $0.isFavorite.value) {
                                 realm?.add($0, update: .all)
                             }
@@ -57,11 +59,14 @@ class RealmService {
     }
     
     func getAllContacts() -> [Contact]  {
+        
+        if shouldMock {
+            return MockManager.shared.DB
+        }
         if let contacts = realm?.objects(Contact.self) {
             let contactsArray = Array(contacts).sorted()
             var favArr:[Contact] = []
             var norArr:[Contact] = []
-            
             let _ = contactsArray.map {
                 if $0.isFavorite.value == true {
                     favArr.append($0)
@@ -75,6 +80,10 @@ class RealmService {
     }
     
     func update(_ contact: Contact) {
+        if shouldMock {
+            MockManager.shared.update(contact)
+            return
+        }
         do {
             try realm?.write {
                 realm?.add(contact, update: .all)
@@ -85,6 +94,10 @@ class RealmService {
     }
     
     func addContact(_ contact: Contact) {
+        if shouldMock {
+            MockManager.shared.DB.append(contact)
+            return
+        }
         do {
             try realm?.write {
                 realm?.add(contact)
@@ -93,7 +106,12 @@ class RealmService {
             print(error)
         }
     }
+    
     func deleteContact(_ contact: Contact) {
+        if shouldMock {
+            MockManager.shared.delete(contact)
+            return
+        }
         do {
             try realm?.write {
                 realm?.delete(contact)
@@ -102,12 +120,15 @@ class RealmService {
             print(error)
         }
     }
-
     
-    func write(block: (Realm?)->Void) {
+    func write(block: ()->Void) {
+        if shouldMock {
+            block()
+            return
+        }
         do {
             try realm?.write {
-                block(realm)
+                block()
             }
         } catch {
             print(error)
@@ -115,6 +136,9 @@ class RealmService {
     }
     
     func getContactsWithId(id: Int) -> Contact? {
+        if shouldMock {
+            return MockManager.shared.getContactsWithId(id: id)
+        }
         return realm?.object(ofType: Contact.self, forPrimaryKey: id)
     }
 }

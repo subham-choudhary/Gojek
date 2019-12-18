@@ -27,6 +27,9 @@ struct MyError: LocalizedError, Equatable {
     var errorDescription: String? {
         return description
     }
+    var errorCode: Int? {
+        return code
+    }
 }
 
 class APIClient {
