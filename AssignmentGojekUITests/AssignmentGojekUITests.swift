@@ -31,7 +31,12 @@ class AssignmentGojekUITests: XCTestCase {
         let phoneNumber = "0987654321"
         let email = "UITest1@giojek.com"
 
-        app.navigationBars["Contacts"].buttons["Add"].tap()
+        let addButton = app.navigationBars.firstMatch.buttons["Add"]
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: addButton, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        addButton.tap()
+        
+        
         let elementsQuery = app.scrollViews.otherElements
         
         let tf1 = elementsQuery.textFields["tf1"]
@@ -52,12 +57,21 @@ class AssignmentGojekUITests: XCTestCase {
         tf4.typeText(email)
 
         app.navigationBars["AssignmentGojek.CreateEditView"].buttons["Done"].tap()
-        app.sheets.scrollViews.otherElements.buttons["OK"].tap()
+        
+        let okButton = app.sheets.scrollViews.otherElements.buttons["OK"]
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: okButton, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        okButton.tap()
         
     }
     
     func getSearchResults(string: String)->Int {
         let searchBar = app.searchFields["Search"]
+        
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: searchBar, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
+        
         searchBar.tap()
         searchBar.typeText(string)
         return(app.tables.cells.count)
